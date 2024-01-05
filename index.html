@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .cardheader {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .cardbody {
+            padding: 20px;
+        }
+
+        .formgroup {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .mkc {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-out;
+        }
+
+        .mkc:hover {
+            background-color: #218838;
+        }
+
+        .cardfooter {
+            background-color: #f8d7da;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="cardheader">BMI Calculator</div>
+            <div class="cardbody">
+                <form>
+                    <div class="formgroup">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" name="weight" id="weight" class="form-control" placeholder="Enter weight">
+                    </div>
+                    <div class="formgroup">
+                        <label for="height">Height (cm)</label>
+                        <input type="number" name="height" id="height" class="form-control" placeholder="Enter height">
+                    </div>
+                    <div class="formgroup">
+                        <label for="bmiValue">BMI VALUE</label>
+                        <input type="number" name="bmiValue" id="bmiValue" class="form-control" readonly>
+                    </div>
+                    <div>
+                        <button type="button" class="mkc" onclick="func()">Calculate BMI</button>
+                    </div>
+                </form>
+            </div>
+            <div class="cardfooter">A healthy BMI ranges between 19 and 25</div>
+        </div>
+    </div>
+
+    <script>
+        function func() {
+            var weight = document.getElementById("weight").value;
+            var height = document.getElementById("height").value;
+            height = height * 0.01; // converting height from cm to meters
+            var bmi = weight / (height * height);
+            bmi=Math.round(bmi);
+
+            document.getElementById("bmiValue").value = bmi.toFixed(2); // Rounded to 2 decimal places
+        }
+    </script>
+</body>
+</html>
